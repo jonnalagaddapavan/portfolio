@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="letter-p.png">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+    <!--css links-->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/skins/color-1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <!--style switcher-->
+     <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
+     <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
+     <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
+     <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
+     <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5" disabled>
+    <link rel="stylesheet" href="css/style-switcher.css">
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: white;
+    }
+
+
+
+
+     /* Mobile Menu Styles - Hidden by default */
+    .mobile-menu {
+      display: none;
+    }
+
+    .mobile-menu-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 25px;
+    cursor: pointer;
+    color: #000; /* Always black color */
+    z-index: 1001;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* Dark theme specific adjustment */
+.dark .mobile-menu-toggle {
+    color: #fff; /* White in dark mode for better contrast */
+}
+
+    
+
+  /* Mobile Navigation */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 250px;
+    height: 100vh;
+    background-color: var(--bg-black-100); /* Use theme variable */
+    padding: 80px 20px 20px;
+    z-index: 1000;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    border-left: 1px solid var(--bg-black-50); /* Add border for separation */
+}
+
+.mobile-nav.active {
+    right: 0;
+}
+
+.mobile-nav ul {
+    list-style: none;
+}
+
+.mobile-nav ul li {
+    margin: 15px 0;
+}
+
+.mobile-nav ul li a {
+    color: var(--text-black-900); /* Use theme variable */
+    text-decoration: none;
+    font-weight: 500;
+    display: block;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav ul li a:hover {
+    background-color: var(--skin-color);
+    color: white;
+}
+
+.mobile-nav ul li a i {
+    margin-right: 10px;
+    color: var(--skin-color);
+}
+
+
+
+
+/* Mobile Header */
+.mobile-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: var(--bg-black-100); /* Use theme variable */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1001;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-bottom: 1px solid var(--bg-black-50);
+}
+
+.mobile-logo a {
+    color: var(--text-black-900); /* Use theme variable */
+    text-decoration: none;
+    font-family: "Cinzel", serif;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.mobile-menu-toggle {
+    font-size: 24px;
+    color: var(--text-black-900); /* Use theme variable */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle i{
+    
+    color:var(--skin-color);
+    padding: 5px;
+}
+
+
+.mobile-menu-toggle {
+    display: none;
+}
+
+
+   /* Mobile Overlay */
+.mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 999;
+    display: none;
+}
+
+.mobile-overlay.active {
+    display: block;
+}
+
+/* Adjust overlay opacity for light theme */
+.light .mobile-overlay {
+    background-color: rgba(0,0,0,0.5);
+}
+    /* Hide desktop sidebar on mobile */
+    @media (max-width: 768px) {
+      .aside {
+        display: none;
+      }
+      
+      .mobile-menu-toggle {
+        display: block;
+      }
+      
+      .maincontent {
+        padding-left: 0;
+      }
+    }
+
+
+    /* Theme toggle button styling */
+.day-night {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    
+    color: var(--text-black-900); /* Default dark color */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+
+.dark .day-night {
+    color: var(--text-black-100); /* Light color in dark mode */
+  
+}
+
+.day-night i {
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+
+
+
+    header {
+      background-color: #111;
+      padding: 15px 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .menu-toggle {
+      font-size: 28px;
+      cursor: pointer;
+      display: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #222;
+        flex-direction: column;
+        display: none;
+        padding: 15px;
+        border-radius: 10px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links li {
+        margin: 10px 0;
+      }
+    }
+
+
+
+
+    @media (max-width: 991px) {
+    .home .home-img {
+        display: block;
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-top: 30px;
+        text-align: center;
+    }
+    
+    .home .home-info {
+        order: 2; /* Make info appear after image */
+    }
+    
+    .home .home-img {
+        order: 1; /* Make image appear first */
+    }
+    
+    .home .row {
+        flex-direction: column;
+    }
+}
+
+
+
+/* Mobile logo styles */
+.mobile-logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    z-index: 1001;
+    display: none;
+    font-family: "Cinzel", serif;
+    
+}
+
+.mobile-logo a {
+    color: var(--text-black-900);
+    text-decoration: none;
+    padding: 10px;
+}
+.mobile-logo a::before{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-bottom: 5px solid var(--skin-color);
+    border-left: 5px solid var(--skin-color);
+    bottom: 0;
+    left: 0;
+}
+.mobile-logo a::after{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-top: 5px solid var(--skin-color);
+    border-right: 5px solid var(--skin-color);
+    top: 0;
+    right: 0;
+
+}
+
+@media (max-width: 1199px) {
+    .mobile-logo {
+        display: block;
+    }
+    
+    .aside .logo {
+        display: none;
+    }
+    /* Social Media Icons */
+
+
+}
+
+
+
+@media (max-width: 767px) {
+    .home {
+        padding-top: 50px; /* Give space for fixed header */
+    }
+    
+    .home .home-img img {
+        height: 250px;
+        max-width: 250px;
+    }
+}
+
+
+
+
+/* Social Media Icons */
+.social-media {
+    margin-top: 20px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 45px;
+    height: 45px; */
+    background: var(--bg-black-50);
+    border-radius: 50%;
+    color: var(--text-black-900);
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background: var(--skin-color);
+    color: white;
+    transform: translateY(-5px);
+}
+
+  </style>
+
+
+
+
+
+
+
+</head>
+<body class="dark">
+
+
+   <div class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+
+    <div class="mobile-logo">
+        <a href="#home">Pavan</a>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay"></div>
+
+    <!-- Mobile Navigation (hidden by default) -->
+    <div class="mobile-nav">
+        <ul>
+            <li><a href="#home"><i class="fa fa-home"></i>Home</a></li>
+            <li><a href="#about"><i class="fa fa-user"></i>About</a></li>
+            <li><a href="#services"><i class="fa fa-list"></i>Technologies</a></li>
+            <li><a href="#portfolio"><i class="fa fa-briefcase"></i>Projects</a></li>
+            <li><a href="#contact"><i class="fa fa-comments"></i>Contact</a></li>
+        </ul>
+    </div>
+
+
+
+
+    <!--==main container start==-->
+    <div class="main-container">
+        <!--aside part start-->
+        <div class="aside">
+            <div class="logo">
+                <a href="#">Pavan</a>
+            </div>
+            <div class="nav-togler">
+                <span></span>
+            </div>
+            <ul class="nav">
+                <li><a href="#home" class="active"><i class="fa fa-home"></i>Home</a></li>
+                <li><a href="#about" class="active"><i class="fa fa-user"></i>About</a></li>
+                <li><a href="#services" class="active"><i class="fa fa-list"></i>Technologies</a></li>
+                <li><a href="#portfolio" class="active"><i class="fa fa-briefcase"></i>Projects</a></li>
+                <li><a href="#contact" class="active"><i class="fa fa-comments"></i>Contact</a></li>
+            </ul>
+        </div>
+        <!--aside part end-->
+        <!--main content start-->
+        <div class="maincontent">
+            <!--home section start-->
+            <section class="home section" id="home">
+                <div class="container">
+                    <div class="row">
+                        <div class="home-info padd-15">
+                            <h3 class="text1">Hello, My Name is <span class="name">Pavan Kumar</span></h3>
+                            <h3 class="profession">I'm a Passionate <span class="typing">Web Developer</span></h3>
+                            <p>I'm a final-year B.Tech student specializing in Computer Science and Engineering at Aditya College of Engineering and Technology. With a strong passion for full-stack web development, I enjoy transforming complex problems into clean, efficient, and scalable web solutions.
+                                Over the years, I've honed my skills in both frontend and backend technologies by actively building real-world projects and continuously improving my coding abilities. I believe in writing clean code, designing user-friendly interfaces, and staying updated with the latest development trends.
+                                Whether it's crafting responsive websites or developing powerful web applications, I thrive on bringing ideas to life through modern technology.
+
+</p>
+                            <a href="#about" class="abtn">More About Me</a>
+                        </div>
+
+                        <div class="home-img">
+                            <img src="pk1.jpg" alt="pavan">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--home section end-->
+            <!--About section start-->
+            <section class="about section" id="about">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-tittle padd-15">
+                            <h1>About Me</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="about-content padd-15">
+                            <div class="row">
+                            <div class="about-text padd-15">
+                                <h2>I ' am Pavan Kumar and <span>Web Developer</span></h2>
+                                <p>Hi, I ' am Pavan Kumar, a passionate web developer dedicated to crafting engaging, user-friendly, and high-performing websites. With a strong foundation in HTML, CSS, JavaScript, and modern frameworks, I specialize in building responsive and dynamic web applications.</p>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="personal-info padd-15">
+                                <div class="row">
+                                    <!-- <div class="info-item padd-15">
+                                        <p>Birthday : <span>04 Nov 2003</span></p>
+                                    </div>
+                                    <div class="info-item padd-15">
+                                        <p>Website : <span>www.domain.com</span></p>
+                                    </div> -->
+                                    <!-- <div class="info-item padd-15">
+                                        <p>Age : <span>21</span></p>
+                                    </div> -->
+                                    <div class="info-item padd-15">
+                                        <p>Email : <a href="mailto:pavan775425@gmail.com"> <span>pavan775425@gmail.com</span></a></p>
+                                    </div>
+                                    <!-- <div class="info-item padd-15">
+                                        <p>Degree : <span>Btech Computer Science and Engineering</span></p>
+                                    </div> -->
+                                    <div class="info-item padd-15">
+                                        <p>Phone : <span>9347909351</span></p>
+                                    </div>
+                                    <!-- <div class="info-item padd-15">
+                                        <p>City : <span>Vijayawada</span></p>
+                                    </div> -->
+                                    <!-- <div class="info-item padd-15">
+                                        <p>Freelance : <span>Available</span></p>
+                                    </div> -->
+
+                                    <div class="info-item social-media">
+                                        <div class="social-icons">
+                                            <a href="https://github.com/jonnalagaddapavan" target="_blank"><i class="fab fa-github"></i></a>
+                                            <a href="https://www.linkedin.com/in/jonnalagaddapavan/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                                            <a href="https://www.facebook.com/profile.php?id=100093111002627" target="_blank"><i class="fab fa-facebook"></i></a>
+                                            <a href="https://www.instagram.com/pavan.j__/" target="_blank"><i class="fab fa-instagram"></i></a>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="row">
+                                    <div class="buttons padd-15">
+                                        <a href="./pavan.pdf" class="btn padd-15" >Download Resume</a>
+                                        <a href="#contact" class="btn hire-me">Hire Me</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skills padd-15">
+                                <div class="row">
+                                    <div class="skill-item padd-15">
+                                        <h5>JAVA</h5>
+                                        <div class="progress">
+                                            <div class="progress-in" style="width: 76%;"></div>
+                                            <div class="skill-percent">76%</div>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item padd-15">
+                                        <h5>PYTHON</h5>
+                                        <div class="progress">
+                                            <div class="progress-in" style="width: 70%;"></div>
+                                            <div class="skill-percent">75%</div>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item padd-15">
+                                        <h5>C++</h5>
+                                        <div class="progress">
+                                            <div class="progress-in" style="width: 70%;"></div>
+                                            <div class="skill-percent">70%</div>
+                                        </div>
+                                    </div>
+                                    <div class="skill-item padd-15">
+                                        <h5>HTML & CSS</h5>
+                                        <div class="progress">
+                                            <div class="progress-in" style="width: 90%;"></div>
+                                            <div class="skill-percent">90%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="education padd-15">
+                                <h3 class="title">Education</h3>
+                                <div class="row">
+                                    <div class="timeline-box padd-15">
+                                        <div class="timeline shadow-box">
+                                            <!--===timeline item===-->
+                                            <div class="timeline-item">
+                                                <div class="circle-dot"></div>
+                                                <h3 class="timeline-date">
+                                                    <i class="fa fa-calendar"></i> 2019 - 2020
+                                                </h3>
+                                                <h4 class="timeline-title"> 10th-(Secondary Education) </h4>
+                                                 <pre><i>Score : 100%</i></pre>
+                                                <p class="timeline-text">Completed Secondary School Education (10th Class) under the Andhra Pradesh State Board with a strong academic foundation. Developed core competencies in Mathematics, Science, and English.</p>
+                                            </div>
+
+                                            <div class="timeline-item">
+                                                <div class="circle-dot"></div>
+                                                <h3 class="timeline-date">
+                                                    <i class="fa fa-calendar"></i> 2020 - 2022
+                                                </h3>
+                                                <h4 class="timeline-title"> Intermediate Education </h4>
+                                                 <pre><i>Score : 92.6%</i></pre>
+                                                <p class="timeline-text">Completed Intermediate Education (MPC stream) from Sri Chaitanya Junior College, Andhra Pradesh, under the Board of Intermediate Education. Gained a strong academic foundation in Mathematics, Physics, and Chemistry, while developing analytical thinking and problem-solving skills</p>
+                                            </div>
+
+                                            <div class="timeline-item">
+                                                <div class="circle-dot"></div>
+                                                <h3 class="timeline-date">
+                                                    <i class="fa fa-calendar"></i> 2022 - Present
+                                                </h3>
+                                                <h4 class="timeline-title"> Btech Computer Science and Engineering </h4>
+                                                <pre><i>Score : 75%</i></pre>
+                                                <p class="timeline-text">Pursuing Bachelor of Technology (B.Tech) in Computer Science and Engineering from Aditya College of Engineering and Technology, Andhra Pradesh, affiliated with JNTU Kakinada.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="Experience padd-15">
+                                <h3 class="title">Experience</h3>
+                                <div class="row">
+                                    <div class="timeline-box padd-15">
+                                        <div class="timeline shadow-box">
+                                            <!--===timeline item===-->
+                                            <div class="timeline-item">
+                                                <div class="circle-dot"></div>
+                                                <h3 class="timeline-date">
+                                                    <i class="fa fa-calendar"></i>2024
+                                                </h3>
+                                                <h4 class="timeline-title"> Artificial Intelligence and Machine Learning</h4>
+                                                <p class="timeline-text">Andhra Pradesh State Skill Development Corporation (APSSDC)
+                                                            May 2024 – June 2024
+                                                             Developed a Naive Bayes sentiment analysis model with 80% accuracy, focusing on real-time review classification.
+                                                             Utilized Python libraries such as Pandas, NLTK, WordCloud, and Scikit-learn for efficient data preprocessing and visualization.
+                                                             Implemented NLP techniques including tokenization, stopword removal, and TF-IDF vectorization; evaluated model performance using accuracy and confusion matrix metrics.</p>
+                                            </div>
+
+                                            <div class="timeline-item">
+                                                <div class="circle-dot"></div>
+                                                <h3 class="timeline-date">
+                                                    <i class="fa fa-calendar"></i> 2023
+                                                </h3>
+                                                <h4 class="timeline-title"> Data Analysis Trainee</h4>
+                                                <p class="timeline-text">Andhra Pradesh State Skill Development Corporation (APSSDC)
+                                                            November 2023
+                                                             Strengthened skills in data manipulation, visualization, and interpretation using Python libraries such as Pandas, NumPy, and Matplotlib.
+                                                             Gained hands-on experience working with real-world datasets to implement data analysis techniques.
+                                                             Applied Python-based tools to extract meaningful insights and solve analytical problems effectively.
+
+                                                            </p>
+                                            </div>
+
+                                           <!--<div class="timeline-item">
+                                                <div class="circle-dot"></div>
+                                                <h3 class="timeline-date">
+                                                    <i class="fa fa-calendar"></i> 2022 - 2026
+                                                </h3>
+                                                <h4 class="timeline-title"> Master in Computer Science </h4>
+                                                <p class="timeline-text">Studied core concepts of computer science, including data structures, algorithms, database management, operating systems, and software development. Gained hands-on experience in web development, programming languages, and system design. Worked on projects involving front-end and back-end development, API integration, and cloud computing. Developed problem-solving and analytical skills through coding challenges and research-based learning.</p>
+                                            </div>--> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--About section start-->
+
+            <!--Service section start-->
+            <section class="service section" id="services">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-tittle padd-15">
+                            <h1>Technologies & Tools</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="service-item padd-15">
+                            <div class="service-inner">
+                                <div class="icon">
+                                    <i class="fa fa-mobile-alt"></i>
+                                </div>
+                                <h4>Front-End Web Development</h4>
+                                <p>Building responsive and user-friendly web pages using HTML, CSS, and JavaScript with atractive animations</p>
+                            </div>
+                        </div>
+                        <div class="service-item padd-15">
+                            <div class="service-inner">
+                                <div class="icon">
+                                    <i class="fa fa-laptop-code"></i>
+                                </div>
+                                <h4>Java Application Development</h4>
+                                <p>Developing robust and scalable applications using core Java and object-oriented principles.</p>
+                            </div>
+                        </div>
+                        <div class="service-item padd-15">
+                            <div class="service-inner">
+                                <div class="icon">
+                                    <i class="fa fa-palette"></i>
+                                </div>
+                                <h4>Cloud Computing with AWS</h4>
+                                <p>Deploying and managing cloud infrastructure using Amazon Web Services for high availability.</p>
+                            </div>
+                        </div>
+                        <div class="service-item padd-15">
+                            <div class="service-inner">
+                                <div class="icon">
+                                    <i class="fa fa-code"></i>
+                                </div>
+                                <h4>Data Analysis & Visualization</h4>
+                                <p>Extracting insights from data using tools like Python, Pandas, and Matplotlib for decision-making.</p>
+                            </div>
+                        </div>
+                        <!--<div class="service-item padd-15">
+                            <div class="service-inner">
+                                <div class="icon">
+                                    <i class="fa fa-search"></i>
+                                </div>
+                                <h4>web design</h4>
+                                <p>i am pavan kumar i love web design</p>
+                                
+                            </div>
+                        </div>
+                        <div class="service-item padd-15">
+                            <div class="service-inner">
+                                <div class="icon">
+                                    <i class="fa fa-bullhorn"></i>
+                                </div>
+                                <h4>web design</h4>
+                                <p>i am pavan kumar i love web design</p>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+            </section>
+            <!--Service section end-->
+
+            <!--portfolio section start-->
+            <section class="portfolio section" id="portfolio">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-tittle padd-15">
+                            <h1>Projects</h1>
+                        </div>
+                    </div>
+
+                    <!-- <div class="row">
+                        <div class="portfolio-heading padd-15">
+                            <h2>My Last Projects :</h2>
+                        </div>
+                    </div> -->
+
+                    <div class="row">
+                        <!--portfolio item start-->
+                        <div class="portfolio-items padd-15">
+                            <div class="portfolio-item-inner shadow-box">
+                                <div class="portfolio-img">
+                                    <a href="https://age-calculator-tau-liard.vercel.app/"><img src="pass.png" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--portfolio item start-->
+
+                         <!--portfolio item start-->
+                         <div class="portfolio-items padd-15">
+                            <div class="portfolio-item-inner shadow-box">
+                                <div class="portfolio-img">
+                                    <a href="https://idsschools.netlify.app/"><img src="Adobe Express - file (1).png" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--portfolio item start-->
+
+                         <!--portfolio item start-->
+                         <div class="portfolio-items padd-15">
+                            <div class="portfolio-item-inner shadow-box">
+                                <div class="portfolio-img">
+                                    <a href="https://passwordgen-zeta.vercel.app/"><img src="passgen.png" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--portfolio item start-->
+
+                         <!--portfolio item start-->
+                         <div class="portfolio-items padd-15">
+                            <div class="portfolio-item-inner shadow-box">
+                                <div class="portfolio-img">
+                                    <a href="https://calculator-alpha-brown.vercel.app/"><img src="cal.png" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--portfolio item start-->
+
+                         <!--portfolio item start-->
+                         <!-- <div class="portfolio-items padd-15">
+                            <div class="portfolio-item-inner shadow-box">
+                                <div class="portfolio-img">
+                                    <img src="portfolio-5.jpg" alt="">
+                                </div>
+                            </div>
+                        </div> -->
+                        <!--portfolio item start-->
+
+                         <!--portfolio item start-->
+                         <!-- <div class="portfolio-items padd-15">
+                            <div class="portfolio-item-inner shadow-box">
+                                <div class="portfolio-img">
+                                    <img src="portfolio-6.jpg" alt="">
+                                </div>
+                            </div>
+                        </div> -->
+                        <!--portfolio item start-->
+                    </div>
+                </div>
+            </section>
+            <!--portfolio section end-->
+
+            <!--contact section start-->
+            <section class="contact section" id="contact">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-tittle padd-15">
+                            <h1>Contact Me</h1>
+                        </div>
+                    </div>
+                    <h3 class="contact-tittle">Have You Any Queries?</h3>
+                    <h4 class="contact-sub-tittle">I'M AT YOUR SERVICES</h4>
+                    <div class="row">
+                        <!--contact info item start-->
+                        <div class="contact-info-item padd-15">
+                            <div class="icon"><i class="fa fa-phone"></i></div>
+                            <h4>Call Us On</h4>
+                            <a href="tel:+919347909351" style="color: white;"><p>+91-9347909351</p></a>
+                        </div>
+                        <!--contact info item end-->
+
+                        <!--contact info item start-->
+                        <div class="contact-info-item padd-15">
+                            <div class="icon"><i class="fa fa-map-marker-alt"></i></div>
+                            <h4>Address</Address></h4>
+                            <p>Vijayawada</p>
+                        </div>
+                        <!--contact info item end-->
+
+                        <!--contact info item start-->
+                        <div class="contact-info-item padd-15">
+                            <div class="icon"><i class="fa fa-envelope"></i></div>
+                            <h4>Email</h4>
+                             <a href="mailto:pavan775425@gmail.com" class="sub-title"><p>pavan775425@gmail.com</p></a>
+                        </div>
+
+
+
+
+
+<!-- 
+                        <div class="contact-info-item padd-15">
+                          <div class="icon"><i class="fas fa-envelope"></i></div>  
+                            <div class="info">
+                                
+                                
+                                <a href="mailto:pavan775425@gmail.com" class="sub-title">pavan775425@gmail.com</a>
+                            </div>
+                        </div> -->
+
+
+
+
+
+                        <!--contact info item end-->
+
+                        
+                        <!-- <div class="contact-info-item padd-15">
+                            <i class="fas fa-envelope"></i>
+                            <div class="info">
+                                 <div class="head">Email</div> -->
+                                <!-- <div class="sub-title">harika.anala@gmail.com</div> 
+                                <a href="mailto:harika.anala@gmail.com" class="sub-title">harika.anala@gmail.com</a>
+                            </div>
+                        </div>-->
+
+
+                        <!--contact info item start-->
+                        <div class="contact-info-item padd-15">
+                            <div class="icon"><i class="fa fa-globe-europe"></i></div>
+                            <h4>Website</h4>
+                            <a href="https://jpavankumar.netlify.app/"><p>www.portfolio.com</p></a>
+                        </div>
+                        <!--contact info item end-->
+                    </div>
+
+                    <h3 class="contact-tittle">SEND ME AN EMAIL</h3>
+<h4 class="contact-sub-tittle">I'M VERY RESPONSIVE TO MESSAGE</h4>
+
+<!--contact form-->
+<form action="https://api.web3forms.com/submit" method="POST">
+    <!-- Replace with your Access Key -->
+    <input type="hidden" name="access_key" value="fe1ec82e-c645-490d-9214-ef5db5dbc5d9">
+
+    <!-- Honeypot Spam Protection -->
+    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+    <div class="row">
+        <div class="contact-form padd-15">
+            <div class="row">
+                <div class="form-item col-6 padd-15">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="name" placeholder="Name" required>
+                    </div>
+                </div>
+                <div class="form-item col-6 padd-15">
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" placeholder="Email" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-item col-12 padd-15">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-item col-12 padd-15">
+                    <div class="form-group">
+                        <textarea class="form-control" name="message" placeholder="MESSAGE" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-item col-12 padd-15">
+                    <button type="submit" class="btn">Send Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+                    
+</form>
+
+
+
+<footer class="footer">
+  <h4 class="contact-sub-tittle">&copy; 2025 Pavan Jonnalagadda. All rights reserved.</h4>
+</footer>
+
+
+
+
+
+
+
+
+
+                </div>
+            </section>
+            <!--contact section end-->
+        </div>
+        <!--main content end-->
+    </div>
+    <!--==main container end==-->
+    <!--style switcher start-->
+    <div class="style-switcher">
+        <div class="style-switcher-toggler s-icon">
+           <i class="fas fa-fill-drip"></i>
+        </div>
+        <div class="day-night s-icon">
+            <i class="fas fa-moon"></i>
+        </div>
+        <h4>Theme Colors</h4>
+        <div class="colors">
+            <span class="color-1" onclick="setActiveStyle('color-1')"></span>
+            <span class="color-2" onclick="setActiveStyle('color-2')"></span>
+            <span class="color-3" onclick="setActiveStyle('color-3')"></span>
+            <span class="color-4" onclick="setActiveStyle('color-4')"></span>
+            <span class="color-5" onclick="setActiveStyle('color-5')"></span>
+        </div>
+    </div>
+    <!--style switcher end-->
+    <!--js files-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js" integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/style-switcher.js"></script>
+       
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const overlay = document.querySelector('.mobile-overlay');
+            
+            // Toggle mobile menu
+            mobileToggle.addEventListener('click', function() {
+                mobileNav.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.classList.toggle('no-scroll');
+            });
+            
+            // Close menu when clicking overlay
+            overlay.addEventListener('click', function() {
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            });
+            
+            // Close menu when clicking a link
+            const mobileLinks = document.querySelectorAll('.mobile-nav a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileNav.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                });
+            });
+        });
+    </script>
+    <script src="js/jsfile.js"></script>
+</body>
+</html>
